@@ -18,7 +18,6 @@ def clean_text(text):
     for sentence in article:
         sentence = re.sub('[\s+]', ' ', sentence)
         sentences.append(sentence)
-    sentences.pop() 
     return sentences
 
 # counting the number of words in the document (sentence)

@@ -1,7 +1,7 @@
 
 import os
 IMAGE_DIR = os.path.join('static', 'media')
-
+print("IMAGE_DIR",IMAGE_DIR)
 import spacy
 from spacy.pipeline import TextCategorizer, Sentencizer
 from spacy.lang.en import English
@@ -51,7 +51,7 @@ def validateAlpha(s):
 def removeStop(s):
   without_stop = []
   [without_stop.append(word.text) for word in tokenizer(s) if word.text not in stopwords and word.text != '']
-  return "".join(without_stop)
+  return " ".join(without_stop)
 
 
 subjects = ["nsubj", "nsubjpass", "csubj", "csubjpass", "agent", "expl"]
@@ -152,7 +152,7 @@ def generate_knowledge_graph(text):
       if validateAlpha(ent1.lower()) and validateAlpha(ent2.lower()):
         source.append(ent1.lower().strip())
         target.append(ent2.lower().strip())
-        edge.append("".join(rel).strip())
+        edge.append(rel)
         indexes.append(i)
   print("\nTotal number of extracted pairs:", len(edge))
   print("\nEdges: ", edge)

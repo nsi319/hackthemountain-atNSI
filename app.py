@@ -22,8 +22,13 @@ def summary_page():
 def generate_summary():
     if request.method=='POST':
         text_input = request.form['original_text']
-        choice = request.form['purpose']
         result = ""
+
+        if str(text_input).strip()=="":
+            return render_template('key_points.html', result="Unable to generate summary :(", original=text_input)
+
+
+        choice = request.form['purpose']
         if choice=="gen":
             sentences =  clean_text(text_input)
             text_data = cnt_in_sent(sentences)
